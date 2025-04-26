@@ -1,0 +1,4 @@
+node_modules
+packages/mobile-app/node_modules/
+packages/smart-contract/node_modules/
+packages/backend/node_modules/

@@ -1,0 +1,14 @@
+{
+  "name": "foodzap",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+"mobile:start": "yarn workspace @food-ordering/mobile-app start",
+    "contracts:build": "yarn workspace food-ordering-contracts anchor build",
+    "contracts:deploy": "yarn workspace food-ordering-contracts anchor deploy",
+    "backend:serve": "yarn workspace @food-ordering/backend serve"
+  },
+  "license": "MIT"
+}
