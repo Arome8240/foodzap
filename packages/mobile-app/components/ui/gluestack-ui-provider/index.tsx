@@ -4,8 +4,7 @@ import { View, ViewProps } from 'react-native';
 import { OverlayProvider } from '@gluestack-ui/overlay';
 import { ToastProvider } from '@gluestack-ui/toast';
 import { useColorScheme } from 'nativewind';
-
-export type ModeType = 'light' | 'dark' | 'system';
+import { ModeType } from './types';
 
 export function GluestackUIProvider({
   mode = 'light',

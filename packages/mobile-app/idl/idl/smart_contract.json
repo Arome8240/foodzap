@@ -1,0 +1,26 @@
+{
+  "address": "4b3JKLWB4S6Xc1RTC22dtgksxSEzcordsMSZsUcWS5BN",
+  "metadata": {
+    "name": "smart_contract",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [],
+      "args": []
+    }
+  ]
+}
