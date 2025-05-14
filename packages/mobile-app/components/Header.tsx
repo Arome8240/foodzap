@@ -1,5 +1,5 @@
 import { View, Pressable } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Text } from "./ui/text";
 import { useConnection } from "@/providers/ConnectionProvider";
 import { useAuthorization } from "@/hooks/useAuthorization";
@@ -17,23 +17,26 @@ export default function Header() {
   const { authorizeSession, selectedAccount } = useAuthorization();
   const { connect, disconnect } = useMobileWallet();
 
+  useEffect(() => {
+    console.log(selectedAccount);
+  }, []);
+
   const handleConnectPress = useCallback(async () => {
-    if (authorizationInProgress) return;
-    setAuthorizationInProgress(true);
+    // if (authorizationInProgress) return;
+    // setAuthorizationInProgress(true);
 
     try {
-      await transact(async (wallet) => {
-        await authorizeSession(wallet);
-      });
-      // await connect();
+      await connect();
+      console.log("done");
       // if (selectedAccount?.publicKey && authorizeSession && connection) {
+      //   console.log(selectedAccount?.publicKey.toString());
       //   const program = getProvider(
       //     selectedAccount.publicKey,
       //     authorizeSession,
       //     connection.sendTransaction
       //   );
       //   if (program) {
-      //     initialize(program);
+      //     //initialize(program);
       //     setIsInitialized(true);
       //   }
       // }
@@ -68,7 +71,7 @@ export default function Header() {
         <Location size="24" color="#4b5563" />
         <View>
           <Text className="text-lg text-gray-300">Delivering to</Text>
-          <Text className="text-xl text-gray-600 font-jk-sans-semibold">
+          <Text className="text-xl text-typography-700 font-jk-sans-semibold">
             Tina junction, Jos
           </Text>
         </View>
@@ -77,7 +80,7 @@ export default function Header() {
 
       <View className="flex-row items-center gap-3">
         <View className="relative">
-          <ShoppingCart size="24" color="#37d67a" />
+          <ShoppingCart size="24" color="#f73905" />
           <View className="absolute items-center justify-center w-5 h-5 bg-red-500 rounded-full -top-2 -right-2">
             <Text className="text-white">1</Text>
           </View>
@@ -119,7 +122,7 @@ export default function Header() {
           </Menu>
         ) : (
           <Pressable
-            onPress={handleDisconnect}
+            onPress={handleConnectPress}
             disabled={authorizationInProgress}
             className="p-3 bg-green-400 rounded-xl"
           >
