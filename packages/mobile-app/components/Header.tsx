@@ -4,11 +4,16 @@ import { Text } from "./ui/text";
 import { useConnection } from "@/providers/ConnectionProvider";
 import { useAuthorization } from "@/hooks/useAuthorization";
 import { useMobileWallet } from "@/hooks/useMobileWallet";
-import { getProvider, initialize } from "@/utils/blockchain";
+import { getProvider } from "@/utils/blockchain";
 import { ellipsify } from "@/utils/ellipsify";
 import { Menu, MenuItem, MenuItemLabel } from "@/components/ui/menu";
-import { transact } from "@solana-mobile/mobile-wallet-adapter-protocol-web3js";
-import { ArrowDown2, Location, ShoppingCart } from "iconsax-react-native";
+import {
+  ArrowDown2,
+  Location,
+  ShoppingCart,
+  Solana,
+} from "iconsax-react-native";
+import { Link } from "expo-router";
 
 export default function Header() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -17,29 +22,22 @@ export default function Header() {
   const { authorizeSession, selectedAccount } = useAuthorization();
   const { connect, disconnect } = useMobileWallet();
 
-  useEffect(() => {
-    console.log(selectedAccount);
-  }, []);
-
   const handleConnectPress = useCallback(async () => {
-    // if (authorizationInProgress) return;
-    // setAuthorizationInProgress(true);
+    if (authorizationInProgress) return;
+    setAuthorizationInProgress(true);
 
     try {
       await connect();
-      console.log("done");
-      // if (selectedAccount?.publicKey && authorizeSession && connection) {
-      //   console.log(selectedAccount?.publicKey.toString());
-      //   const program = getProvider(
-      //     selectedAccount.publicKey,
-      //     authorizeSession,
-      //     connection.sendTransaction
-      //   );
-      //   if (program) {
-      //     //initialize(program);
-      //     setIsInitialized(true);
-      //   }
-      // }
+      if (selectedAccount?.publicKey && authorizeSession && connection) {
+        const program = getProvider(
+          selectedAccount.publicKey,
+          authorizeSession,
+          connection.sendTransaction
+        );
+        if (program) {
+          setIsInitialized(true);
+        }
+      }
     } catch (err) {
       console.error("Error during connect/initialize:", err);
     } finally {
@@ -67,16 +65,18 @@ export default function Header() {
 
   return (
     <View className="flex-row items-center justify-between gap-4">
-      <Pressable className="flex-row items-center gap-2">
-        <Location size="24" color="#4b5563" />
-        <View>
-          <Text className="text-lg text-gray-300">Delivering to</Text>
-          <Text className="text-xl text-typography-700 font-jk-sans-semibold">
-            Tina junction, Jos
-          </Text>
-        </View>
-        <ArrowDown2 size="16" color="#4b5563" />
-      </Pressable>
+      <Link href="/map" asChild>
+        <Pressable className="flex-row items-center gap-2">
+          <Location size="24" color="#4b5563" />
+          <View>
+            <Text className="text-lg text-gray-300">Delivering to</Text>
+            <Text className="text-xl text-typography-700 font-jk-sans-semibold">
+              Tina junction, Jos
+            </Text>
+          </View>
+          <ArrowDown2 size="16" color="#4b5563" />
+        </Pressable>
+      </Link>
 
       <View className="flex-row items-center gap-3">
         <View className="relative">
@@ -94,11 +94,12 @@ export default function Header() {
               return (
                 <Pressable
                   {...triggerProps}
-                  className="p-3 border border-green-400 rounded-xl"
+                  className="p-3 border border-[#BA68C8] rounded-lg"
                 >
-                  <Text className="text-green-400">
+                  <Solana size="16" color="#BA68C8" />
+                  {/* <Text className="text-green-400">
                     {ellipsify(selectedAccount.publicKey.toString())}
-                  </Text>
+                  </Text> */}
                 </Pressable>
               );
             }}
@@ -108,14 +109,16 @@ export default function Header() {
               key="Add account"
               textValue="Add account"
             >
-              <MenuItemLabel size="sm">Change Address</MenuItemLabel>
+              <MenuItemLabel size="md" className="text-typography-700">
+                Change Address
+              </MenuItemLabel>
             </MenuItem>
             <MenuItem
               onPress={handleDisconnect}
               key="Community"
               textValue="Community"
             >
-              <MenuItemLabel className="text-red-500" size="sm">
+              <MenuItemLabel className="text-red-500" size="md">
                 Disconnect
               </MenuItemLabel>
             </MenuItem>

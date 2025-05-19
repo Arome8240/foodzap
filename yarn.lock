@@ -1192,6 +1192,11 @@
     resolve-from "^5.0.0"
     semver "^7.6.0"
 
+"@expo/html-elements@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.4.2.tgz#4e9f6b9250af8d0befe3242fd42704cca2421e0e"
+  integrity sha512-lNioCgdtOrCMMqzHY+PCTdyuWBTU4yMBlOzPSkS4YFIWt9bq0zexM2ZJkpybTXmowNdE3zHO93xxAmiA2yDi2w==
+
 "@expo/image-utils@^0.6.5":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@expo/image-utils/-/image-utils-0.6.5.tgz#af25e9dd79d1168bebea91dc7f1e6f3efd28643c"
@@ -1398,6 +1403,19 @@
   integrity sha512-ePEgLgVCqi2BBFnTMWPfIghu6FkbZnnBVhO2sSxvLfrdFw7wCHAHiDoM2h4NRgjbaY7+B7HgOLZGkK187pZTZg==
   dependencies:
     tslib "^2.8.0"
+
+"@gluestack-ui/actionsheet@^0.2.53":
+  version "0.2.53"
+  resolved "https://registry.yarnpkg.com/@gluestack-ui/actionsheet/-/actionsheet-0.2.53.tgz#09608d32f373f99c0dff9fb62856895a843f1a05"
+  integrity sha512-93qHvq6BHezJ7wt2lce4OQ38wXCGsDtglj5nlmwo2T41vj4ubOtDVoSUhXT+hfH0EmRr0TxFNeFqIgesO46qVw==
+  dependencies:
+    "@gluestack-ui/hooks" "0.1.13"
+    "@gluestack-ui/overlay" "^0.1.22"
+    "@gluestack-ui/transitions" "^0.1.11"
+    "@gluestack-ui/utils" "^0.1.15"
+    "@react-native-aria/dialog" "^0.0.5"
+    "@react-native-aria/focus" "^0.2.9"
+    "@react-native-aria/interactions" "0.2.16"
 
 "@gluestack-ui/hooks@0.1.13":
   version "0.1.13"
@@ -1879,6 +1897,18 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.0"
 
+"@react-aria/dialog@*":
+  version "3.5.24"
+  resolved "https://registry.yarnpkg.com/@react-aria/dialog/-/dialog-3.5.24.tgz#1ad9ecd505f8c3e0c7700a84e8c213a0416c5278"
+  integrity sha512-tw0WH89gVpHMI5KUQhuzRE+IYCc9clRfDvCppuXNueKDrZmrQKbeoU6d0b5WYRsBur2+d7ErtvpLzHVqE1HzfA==
+  dependencies:
+    "@react-aria/interactions" "^3.25.0"
+    "@react-aria/overlays" "^3.27.0"
+    "@react-aria/utils" "^3.28.2"
+    "@react-types/dialog" "^3.5.17"
+    "@react-types/shared" "^3.29.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/focus@^3.2.3", "@react-aria/focus@^3.20.2":
   version "3.20.2"
   resolved "https://registry.yarnpkg.com/@react-aria/focus/-/focus-3.20.2.tgz#f20cd830d2536b905169a547228c5d5471a874bc"
@@ -1993,6 +2023,16 @@
     "@react-aria/utils" "^3.28.2"
     "@react-types/shared" "^3.29.0"
     "@swc/helpers" "^0.5.0"
+
+"@react-native-aria/dialog@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@react-native-aria/dialog/-/dialog-0.0.5.tgz#aa8d1901cb9e132f0c750adfa2e8091c3aefc28d"
+  integrity sha512-ZThiWyymf3WiA2EdjStV32pTL3RjAb7H/CL0Zsd1wKNuw1lU9HX6h4UIUpt0MZhcFCUnZjCovNtU9IRwbbdj/Q==
+  dependencies:
+    "@react-aria/dialog" "*"
+    "@react-native-aria/utils" "0.2.12"
+    "@react-types/dialog" "*"
+    "@react-types/shared" "*"
 
 "@react-native-aria/focus@^0.2.9":
   version "0.2.9"
@@ -2604,6 +2644,14 @@
     "@react-types/overlays" "^3.8.14"
     "@react-types/shared" "^3.29.0"
 
+"@react-types/dialog@*", "@react-types/dialog@^3.5.17":
+  version "3.5.17"
+  resolved "https://registry.yarnpkg.com/@react-types/dialog/-/dialog-3.5.17.tgz#35897ebe2ddde1b814f968caa50ffcf97864324d"
+  integrity sha512-rKe2WrT272xuCH13euegBGjJAORYXJpHsX2hlu/f02TmMG4nSLss9vKBnY2N7k7nci65k5wDTW6lcsvQ4Co5zQ==
+  dependencies:
+    "@react-types/overlays" "^3.8.14"
+    "@react-types/shared" "^3.29.0"
+
 "@react-types/grid@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@react-types/grid/-/grid-3.3.1.tgz#8f41f5fb6d1c213b34bc80bc8416b1a837378f56"
@@ -2655,7 +2703,7 @@
   dependencies:
     "@react-types/shared" "^3.29.0"
 
-"@react-types/shared@^3.29.0":
+"@react-types/shared@*", "@react-types/shared@^3.29.0":
   version "3.29.0"
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.29.0.tgz#f29bdad3bff1336aaa754d7abc420da2f014d931"
   integrity sha512-IDQYu/AHgZimObzCFdNl1LpZvQW/xcfLt3v20sorl5qRucDVj4S9os98sVTZ4IRIBjmS+MkjqpR5E70xan7ooA==
@@ -5083,6 +5131,13 @@ expo-crypto@~14.0.2:
   integrity sha512-WRc9PBpJraJN29VD5Ef7nCecxJmZNyRKcGkNiDQC1nhY5agppzwhqh7zEzNFarE/GqDgSiaDHS8yd5EgFhP9AQ==
   dependencies:
     base64-js "^1.3.0"
+
+expo-device@~7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/expo-device/-/expo-device-7.0.3.tgz#e8d502ac5ff7644dd617fa38a71fe49e7508856b"
+  integrity sha512-uNGhDYmpDj/3GySWZmRiYSt52Phdim11p0pXfgpCq/nMks0+UPZwl3D0vin5N8/gpVe5yzb13GYuFxiVoDyniw==
+  dependencies:
+    ua-parser-js "^0.7.33"
 
 expo-file-system@~18.0.12:
   version "18.0.12"
@@ -8176,6 +8231,11 @@ qrcode-terminal@0.11.0:
   resolved "https://registry.yarnpkg.com/qrcode-terminal/-/qrcode-terminal-0.11.0.tgz#ffc6c28a2fc0bfb47052b47e23f4f446a5fbdb9e"
   integrity sha512-Uu7ii+FQy4Qf82G4xu7ShHhjhGahEpCWc3x8UavY3CTcWV+ufmmCtwkr7ZKsX42jdL0kr1B5FKUeqJvAn51jzQ==
 
+qs@~6.9.1:
+  version "6.9.7"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.7.tgz#4610846871485e1e048f44ae3b94033f0e675afe"
+  integrity sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==
+
 query-string@^7.1.3:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.3.tgz#a1cf90e994abb113a325804a972d98276fe02328"
@@ -8286,6 +8346,16 @@ react-native-gesture-handler@~2.20.2:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-google-places-autocomplete@^2.5.7:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-2.5.7.tgz#92a7ded4466a46fff70fa428f9f8dd60c19f9edb"
+  integrity sha512-yWEJ31gsRptStEZDele9no0J6Z+MxtNpQKKwjvGmFrWmpYDEAzpRtxy1Xq0u+ckMepJfrg/EU+OL5LgtMbnCDA==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.7.2"
+    qs "~6.9.1"
+    uuid "^10.0.0"
 
 react-native-helmet-async@2.0.4:
   version "2.0.4"
@@ -9618,6 +9688,11 @@ typescript@^5.3.3, typescript@^5.6.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.3.tgz#92f8a3e5e3cf497356f4178c34cd65a7f5e8440e"
   integrity sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==
 
+ua-parser-js@^0.7.33:
+  version "0.7.40"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.40.tgz#c87d83b7bb25822ecfa6397a0da5903934ea1562"
+  integrity sha512-us1E3K+3jJppDBa3Tl0L3MOJiGhe1C6P0+nIvQAFYbxlMAx0h81eOwLmU57xgqToduDDPx3y5QsdjPfDu+FgOQ==
+
 ua-parser-js@^1.0.35:
   version "1.0.40"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.40.tgz#ac6aff4fd8ea3e794a6aa743ec9c2fc29e75b675"
@@ -9755,6 +9830,11 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
+
+uuid@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-10.0.0.tgz#5a95aa454e6e002725c79055fd42aaba30ca6294"
+  integrity sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==
 
 uuid@^7.0.3:
   version "7.0.3"

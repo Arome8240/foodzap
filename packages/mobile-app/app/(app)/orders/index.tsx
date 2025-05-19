@@ -3,11 +3,18 @@ import React from "react";
 import { Text } from "@/components/ui/text";
 import { ReceiptEdit } from "iconsax-react-native";
 import { Link } from "expo-router";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 export default function orders() {
+  const tabBarHeight = useBottomTabBarHeight();
   const myOrders = Array.from({ length: 4 });
   return (
-    <View className="flex-1 p-5 bg-white">
+    <View
+      style={{
+        marginBottom: tabBarHeight,
+      }}
+      className="flex-1 p-5 bg-white"
+    >
       <View>
         <Text className="text-xl text-center text-typography-700 font-jk-sans-semibold">
           Your Orders

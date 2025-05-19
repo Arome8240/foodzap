@@ -2,15 +2,7 @@ import { Tabs } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { Pressable, StyleSheet } from "react-native";
-import {
-  Home,
-  Profile,
-  Car,
-  ReceiptSearch,
-  Receipt1,
-  More2,
-  SearchNormal,
-} from "iconsax-react-native";
+import { Home, Receipt1, More2, SearchNormal } from "iconsax-react-native";
 import Header from "@/components/Header";
 
 export default function AppLayout() {
