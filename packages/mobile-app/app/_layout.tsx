@@ -64,6 +64,7 @@ const queryClient = new QueryClient();
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
+
   const [fontsLoaded] = useFonts({
     PlusJakartaSans_300Light,
     PlusJakartaSans_400Regular,
@@ -78,30 +79,13 @@ export default function RootLayout() {
     if (fontsLoaded) {
       setIsLoading(false);
     }
-  }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return (
-      <View className="items-center justify-center flex-1">
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+    Linking.openURL("/orders/1");
+
+    registerForPushNotificationsAsync().then(
+      (token) => token && console.log(token)
     );
-  }
 
-  //NOTIFICATION HANDLER
-  const [expoPushToken, setExpoPushToken] = useState("");
-  const [channels, setChannels] = useState<Notifications.NotificationChannel[]>(
-    []
-  );
-  const [notification, setNotification] = useState<
-    Notifications.Notification | undefined
-  >(undefined);
-  const notificationListener = useRef<Notifications.EventSubscription>();
-  const responseListener = useRef<Notifications.EventSubscription>();
-
-  useEffect(() => {
-    // registerForPushNotificationsAsync().then(token => token && setExpoPushToken(token));
-    // Handle notification when app is in foreground
     const subscription = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const url = response.notification.request.content.data.url;
@@ -118,7 +102,20 @@ export default function RootLayout() {
     handleInitialNotification();
 
     return () => subscription.remove();
-  }, []);
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return (
+      <View className="items-center justify-center flex-1">
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+  // useEffect(() => {
+  //   // registerForPushNotificationsAsync().then(token => token && setExpoPushToken(token));
+  //   // Handle notification when app is in foreground
+  // }, []);
 
   return (
     <React.Fragment>
@@ -141,14 +138,14 @@ export default function RootLayout() {
 async function registerForPushNotificationsAsync() {
   let token;
 
-  if (Platform.OS === "android") {
-    await Notifications.setNotificationChannelAsync("myNotificationChannel", {
-      name: "A channel is needed for the permissions prompt to appear",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: "#FF231F7C",
-    });
-  }
+  // if (Platform.OS === "android") {
+  //   await Notifications.setNotificationChannelAsync("myNotificationChannel", {
+  //     name: "A channel is needed for the permissions prompt to appear",
+  //     importance: Notifications.AndroidImportance.MAX,
+  //     vibrationPattern: [0, 250, 250, 250],
+  //     lightColor: "#FF231F7C",
+  //   });
+  // }
 
   if (Device.isDevice) {
     const { status: existingStatus } =
@@ -166,17 +163,12 @@ async function registerForPushNotificationsAsync() {
     // https://docs.expo.dev/push-notifications/push-notifications-setup/#configure-projectid
     // EAS projectId is used here.
     try {
-      const projectId =
-        Constants?.expoConfig?.extra?.eas?.projectId ??
-        Constants?.easConfig?.projectId;
+      const projectId = "8e75e63d-0717-4033-be2d-bea38b19b739";
       if (!projectId) {
         throw new Error("Project ID not found");
       }
-      token = (
-        await Notifications.getExpoPushTokenAsync({
-          projectId,
-        })
-      ).data;
+      console.log("Project ID:", projectId);
+      token = (await Notifications.getExpoPushTokenAsync()).data;
       console.log(token);
     } catch (e) {
       token = `${e}`;
